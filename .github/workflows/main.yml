@@ -2,16 +2,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # Define environment variables for the job
+    env:
+      USE_APACHE: true
+      USE_NGINX: false
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Build and run Docker containers with Apache
-      if: env.USE_APACHE == 'true'
+      if: env.USE_APACHE
       run: |
         docker-compose -f docker-compose.apache.yml up --build -d
 
     - name: Build and run Docker containers with Nginx
-      if: env.USE_NGINX == 'true'
+      if: env.USE_NGINX
       run: |
         docker-compose -f docker-compose.nginx.yml up --build -d
