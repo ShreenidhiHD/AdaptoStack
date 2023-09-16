@@ -1,0 +1,13 @@
+# Laravel-specific
+/backend/vendor/
+/backend/node_modules/
+/backend/.env
+/backend/storage/*.key
+
+# React-specific
+/frontend/node_modules/
+/frontend/.env
+
+# General
+.DS_Store
+Thumbs.db
