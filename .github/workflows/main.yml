@@ -1,13 +1,17 @@
-name: CI/CD Workflow
-
-on:
-  push:
-    branches: [ master ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: docker-compose up --build
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build and run Docker containers with Apache
+      if: env.USE_APACHE == 'true'
+      run: |
+        docker-compose -f docker-compose.apache.yml up --build -d
+
+    - name: Build and run Docker containers with Nginx
+      if: env.USE_NGINX == 'true'
+      run: |
+        docker-compose -f docker-compose.nginx.yml up --build -d
