@@ -1,0 +1,10 @@
+stages:
+  - build
+
+build_app:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker-compose up --build
