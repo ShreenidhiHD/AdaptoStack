@@ -15,4 +15,3 @@ jobs:
       if: env.USE_NGINX == 'true'
       run: |
         docker-compose -f docker-compose.nginx.yml up --build -d
-#run
