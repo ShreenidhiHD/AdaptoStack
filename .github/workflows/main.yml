@@ -13,7 +13,7 @@ jobs:
       USE_NGINX: 'false'
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Build and run Docker containers with Apache
       if: env.USE_APACHE == 'true'
